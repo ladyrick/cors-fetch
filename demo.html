@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+</head>
+
+<body>
+    <h1>Cross-Origin-Fetch</h1>
+    <p>Start to make cross-origin fetch using
+        <a href="https://chrome.google.com/webstore/detail/cross-origin-fetch/kinhnahcpbhnjhimpbnhnhmobkpmgkok" target="_blank">
+            Cross-Origin-Fetch
+        </a>
+    </p>
+    <p>Github repo: <a href="https://github.com/ladyrick/cros-fetch" target="_blank">https://github.com/ladyrick/cros-fetch</a></p>
+    <p>A simple test case:</p>
+    <pre>fetch("https://www.baidu.com")</pre>
+    <button id="fetch">Use fetch to get data</button>
+    <button id="cros-fetch">Use CrosFetch to get data</button>
+    <pre id="board"></pre>
+
+    <script>
+        const print = msg => document.querySelector('#board').textContent = msg.toString() + "\n";
+        document.querySelector('#fetch').onclick = () => {
+            fetch('https://www.baidu.com')
+                .then(response => response.text())
+                .then(text => print(text))
+                .catch(e => print(e));
+        };
+        document.querySelector('#cros-fetch').onclick = () => {
+            if (window.CrosFetch instanceof Function) {
+                CrosFetch('https://www.baidu.com')
+                    .then(response => print(response.text))
+                    .catch(e => print(e));
+            } else {
+                print('Cros-Origin-Fetch chrome extension not installed.\nPlease install it and refresh the page.')
+            }
+        };
+    </script>
+</body>
+
+</html>
