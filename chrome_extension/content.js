@@ -4,7 +4,7 @@
     window.CrosFetch = (function () {
         document.addEventListener('response', function (e) {
             const response_obj = e.detail;
-            document.dispatchEvent(new CustomEvent('cros-fetch-' + response_obj.key, { detail: response_obj }));
+            document.dispatchEvent(new CustomEvent('cors-fetch-' + response_obj.key, { detail: response_obj }));
         }, false);
     
         return (input, init = {}) => {
@@ -16,7 +16,7 @@
                 };
                 document.dispatchEvent(new CustomEvent('request', { detail: request }));
                 const handler = (e) => {
-                    document.removeEventListener('cros-fetch-' + request.key, handler);
+                    document.removeEventListener('cors-fetch-' + request.key, handler);
                     const response_obj = e.detail;
                     if (response_obj.error) {
                         reject(new window[response_obj.error.name](response_obj.error.message));
@@ -24,7 +24,7 @@
                         resolve(response_obj.resolve);
                     }
                 }
-                document.addEventListener('cros-fetch-' + request.key, handler);
+                document.addEventListener('cors-fetch-' + request.key, handler);
             });
         };
     })();

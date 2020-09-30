@@ -9,4 +9,4 @@ It's a chrome extension that allow you to make cross-origin fetch.
 
 ## Demo
 
-https://ladyrick.github.io/cros-fetch/demo.html
+https://ladyrick.github.io/cors-fetch/demo.html

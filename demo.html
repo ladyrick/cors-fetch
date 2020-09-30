@@ -13,11 +13,11 @@
             Cross-Origin-Fetch
         </a>
     </p>
-    <p>Github repo: <a href="https://github.com/ladyrick/cros-fetch" target="_blank">https://github.com/ladyrick/cros-fetch</a></p>
+    <p>Github repo: <a href="https://github.com/ladyrick/cors-fetch" target="_blank">https://github.com/ladyrick/cors-fetch</a></p>
     <p>A simple test case:</p>
     <pre>fetch("https://www.baidu.com")</pre>
     <button id="fetch">Use fetch to get data</button>
-    <button id="cros-fetch">Use CrosFetch to get data</button>
+    <button id="cors-fetch">Use CrosFetch to get data</button>
     <pre id="board"></pre>
 
     <script>
@@ -28,13 +28,13 @@
                 .then(text => print(text))
                 .catch(e => print(e));
         };
-        document.querySelector('#cros-fetch').onclick = () => {
+        document.querySelector('#cors-fetch').onclick = () => {
             if (window.CrosFetch instanceof Function) {
                 CrosFetch('https://www.baidu.com')
                     .then(response => print(response.text))
                     .catch(e => print(e));
             } else {
-                print('Cros-Origin-Fetch chrome extension not installed.\nPlease install it and refresh the page.')
+                print('Cross-Origin-Fetch chrome extension not installed.\nPlease install it and refresh the page.')
             }
         };
     </script>
