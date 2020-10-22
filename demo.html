@@ -17,7 +17,7 @@
     <p>A simple test case:</p>
     <pre>fetch("https://www.baidu.com")</pre>
     <button id="fetch">Use fetch to get data</button>
-    <button id="cors-fetch">Use CrosFetch to get data</button>
+    <button id="cors-fetch">Use CorsFetch to get data</button>
     <pre id="board"></pre>
 
     <script>
@@ -29,8 +29,8 @@
                 .catch(e => print(e));
         };
         document.querySelector('#cors-fetch').onclick = () => {
-            if (window.CrosFetch instanceof Function) {
-                CrosFetch('https://www.baidu.com')
+            if (window.CorsFetch instanceof Function) {
+                CorsFetch('https://www.baidu.com')
                     .then(response => print(response.text))
                     .catch(e => print(e));
             } else {

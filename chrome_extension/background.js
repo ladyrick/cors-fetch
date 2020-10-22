@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(
     (req, sender, sendResponse) => {
-        console.log('%cCrosFetch req ' + req.key, 'color: #e88d67', req);
+        console.log('%cCorsFetch req ' + req.key, 'color: #e88d67', req);
         const response_obj = {
             key: req.key,
             resolve: null,
@@ -26,14 +26,14 @@ chrome.runtime.onMessage.addListener(
             } catch {
                 // not a json response;
             };
-            console.log('%cCrosFetch rsp ' + response_obj.key, 'color: #7b8cde', response_obj);
+            console.log('%cCorsFetch rsp ' + response_obj.key, 'color: #7b8cde', response_obj);
             sendResponse(response_obj);
         }).catch((e) => {
             response_obj.error = {
                 name: e.name,
                 message: e.message,
             };
-            console.log('%cCrosFetch rsp ' + response_obj.key, 'color: #7b8cde', response_obj);
+            console.log('%cCorsFetch rsp ' + response_obj.key, 'color: #7b8cde', response_obj);
             sendResponse(response_obj);
         })
         return true;
